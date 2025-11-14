@@ -1,9 +1,9 @@
-import { JSX } from 'react'
+import { JSX, useState } from 'react'
 import {
     View, Text, TextInput, TouchableOpacity, StyleSheet
     } from 'react-native'
 import { Link, router } from 'expo-router'
-import { useState } from 'react'
+
 
 import Button from '../../components/Button'
 
@@ -32,7 +32,7 @@ const LogIn = (): JSX.Element => {
                 />
                 <TextInput
                 style={styles.input}
-                value='Password'
+                value={password}
                 onChangeText={(text) => { setPassword(text) }}
                 autoCapitalize='none'
                 secureTextEntry
