@@ -1,6 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { initializeAuth } from 'firebase/auth' // ここから getReactNativePersistence を削除
-import { getReactNativePersistence } from 'firebase/auth/react-native'
+import { initializeAuth,  getReactNativePersistence } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage'
 

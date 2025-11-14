@@ -3,12 +3,22 @@ import {
     View, Text, TextInput, TouchableOpacity, StyleSheet
 } from 'react-native'
 import { Link, router } from 'expo-router'
+import { createUserWithEmailAndPassword } from 'firebase/auth/cordova'
 
+import { auth } from '../../config'
 import Button from '../../components/Button'
 
-const handlePress = (): void => {
+const handlePress = (email: string, password: string): void => {
     //　ログイン
-    router.push('')
+    console.log(email, password)
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        console.log(userCredential.user.uid)
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+    router.push('memo/list')
 }
 
 const SignUp = (): JSX.Element => {
@@ -36,7 +46,7 @@ const SignUp = (): JSX.Element => {
                     placeholder='Password'
                     textContentType='password'
                 />
-                <Button label='Submit' onPress={handlePress} />
+                <Button label='Submit' onPress={() => { handlePress(email, password)}} />
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>Already registered?</Text>
                     <Link href='/auth/log_in' asChild>
