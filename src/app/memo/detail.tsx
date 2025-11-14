@@ -2,7 +2,6 @@ import { View, Text, ScrollView, StyleSheet, PermissionsAndroid } from 'react-na
 import { Feather } from '@expo/vector-icons'
 import { router } from 'expo-router'
 
-import Header from '../../components/header'
 import CircleButton from '../../components/CircleButton'
 import { JSX } from 'react'
 import Icon from '../../components/icon'
@@ -15,7 +14,6 @@ const handlePress = (): void => {
 const Detail = (): JSX.Element => {
     return(
         <View style={styles.container}>
-            <Header />
             <View style={styles.memoHeader}>
                 <Text style={styles.memoTitle}>買い物リスト</Text>
                 <Text style={styles.memoDate}>2023年10月1日 10：00</Text>
@@ -27,7 +25,7 @@ const Detail = (): JSX.Element => {
                     本文ようなので使い方を間違えると不自然に見えることもありますので要注意。
                 </Text>
             </ScrollView>
-            <CircleButton onPress={handlePress} style={{ top: 160, bottom: 'auto' }}>
+            <CircleButton onPress={handlePress} style={{ top: 60, bottom: 'auto' }}>
                 <Icon name='pencil' size={40} color='#ffffff' />
             </CircleButton>
         </View>
