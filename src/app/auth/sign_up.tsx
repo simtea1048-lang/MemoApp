@@ -1,6 +1,6 @@
 import { JSX, useState } from 'react'
 import {
-    View, Text, TextInput, TouchableOpacity, StyleSheet
+    View, Text, TextInput, Alert, TouchableOpacity, StyleSheet
 } from 'react-native'
 import { Link, router } from 'expo-router'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
@@ -14,12 +14,13 @@ const handlePress = (email: string, password: string): void => {
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         console.log(userCredential.user.uid)
-        
+        router.replace('/memo/list')
     })
     .catch((error) => {
-        console.log(error)
+        const { code, message } = error
+        console.log(code, message)
+        Alert.alert(message)
     })
-    router.push('/memo/list')
 }
 
 const SignUp = (): JSX.Element => {
@@ -50,7 +51,7 @@ const SignUp = (): JSX.Element => {
                 <Button label='Submit' onPress={() => { handlePress(email, password) }} />
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>Already registered?</Text>
-                    <Link href='/auth/log_in' asChild>
+                    <Link href='/auth/log_in' asChild replace>
                         <TouchableOpacity>
                             <Text style={styles.footerLink}>Log in</Text>
                         </TouchableOpacity>
