@@ -1,9 +1,9 @@
 import { JSX } from 'react'
-import { Text, TouchableOpacity, StyleSheet, Alert } from 'react-native'
+import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 
 interface Props {
-    label: string;
-    onPress?: () => void;
+    label: string
+    onPress?: () => void
 }
 
 const Button = (props: Props): JSX.Element => {
