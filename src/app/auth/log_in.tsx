@@ -4,6 +4,7 @@ import {
     } from 'react-native'
 import { Link, router } from 'expo-router'
 import { signInWithEmailAndPassword} from 'firebase/auth'
+import React from 'react'
 
 
 import Button from '../../components/Button'

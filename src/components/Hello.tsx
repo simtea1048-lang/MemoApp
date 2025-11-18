@@ -1,5 +1,6 @@
 import { JSX } from 'react'
 import { View,Text,StyleSheet,type TextStyle} from 'react-native'
+import React from 'react'
 
 interface Props {
     children: string

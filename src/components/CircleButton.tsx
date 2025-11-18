@@ -1,3 +1,4 @@
+import React from 'react'
 import { JSX } from 'react'
 import {
     Text, StyleSheet, TouchableOpacity, type ViewStyle

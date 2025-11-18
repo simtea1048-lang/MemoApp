@@ -6,6 +6,7 @@ import { router } from 'expo-router'
 
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/icon'
+import React from 'react'
 
 const handlePress = (): void => {
     router.back()

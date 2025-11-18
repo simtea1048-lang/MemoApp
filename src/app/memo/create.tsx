@@ -3,18 +3,20 @@ import {
     View, TextInput, StyleSheet
 } from 'react-native'
 import { router } from 'expo-router'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, Timestamp } from 'firebase/firestore'
 
 import KeyboardAvoidingView from '../../components/KeyboardAvoidingView'
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/icon'
 import { db, auth } from '../../config'
+import React from 'react'
 
-const handlePress = (): void => {
+const handlePress = (bodyText: string): void => {
     if (auth.currentUser === null) { return }
     const ref = collection(db, `users/${auth.currentUser.uid}/memos`)
     addDoc(ref, {
-        bodyText: 'test'
+        bodyText,
+        upDatedAt: Timestamp.fromDate(new Date())
     })
     .then((docRef) => {
         console.log('success', docRef.id)
@@ -47,7 +49,7 @@ const Create = (): JSX.Element => {
                 autoFocus
                 />
             </View>
-            <CircleButton onPress={handlePress}>
+            <CircleButton onPress= { () => {handlePress(bodyText) }}>
                 <Icon name='check' size={40} color='#ffffff' />
             </CircleButton>
         </KeyboardAvoidingView>

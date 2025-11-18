@@ -5,6 +5,7 @@ import { router } from 'expo-router'
 import CircleButton from '../../components/CircleButton'
 import { JSX } from 'react'
 import Icon from '../../components/icon'
+import React from 'react'
 
 const handlePress = (): void => {
     router.push('/memo/edit')

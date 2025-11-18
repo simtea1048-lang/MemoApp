@@ -1,6 +1,6 @@
-import { initializeApp } from 'firebase/app'
+import { initializeApp, FirebaseApp } from 'firebase/app'
 import { initializeAuth,  getReactNativePersistence } from 'firebase/auth'
-import { getFirestore } from 'firebase/firestore'
+import { getFirestore, Firestore } from 'firebase/firestore'
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage'
 
 const firebaseConfig = {
@@ -12,10 +12,10 @@ const firebaseConfig = {
   appId: process.env.EXPO_PUBLIC_FB_APP_ID
 }
 
-const app = initializeApp(firebaseConfig)
+const app: FirebaseApp  = initializeApp(firebaseConfig)
 const auth = initializeAuth(app, {
     persistence: getReactNativePersistence(ReactNativeAsyncStorage)
 })
-const db = getFirestore(app)
+const db: Firestore = getFirestore(app)
 
 export { app, auth, db }
