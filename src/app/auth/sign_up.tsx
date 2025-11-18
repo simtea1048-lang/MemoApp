@@ -7,6 +7,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 import { auth } from '../../config'
 import Button from '../../components/Button'
+import React from 'react'
 
 const handlePress = (email: string, password: string): void => {
     //会員登録

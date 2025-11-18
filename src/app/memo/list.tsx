@@ -10,7 +10,7 @@ import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/icon'
 import LogOutButton from '../../components/LogOutButton'
 import { db, auth } from '../../config'
-import { Memo } from '../../../types/memo'
+import { type Memo } from '../../../types/memo'
 
 
 const handlePress = (): void => {
@@ -26,9 +26,9 @@ const List = (): JSX.Element => {
     })
     },[])
     useEffect(() => {
-        if (auth.currentUser === null){return}
-        const ref = collection(db, `user/${auth.currentUser.uid}/memos`)
-        const q = query(ref, orderBy('undatedAt', 'desc'))
+        if (auth.currentUser === null){ return }
+        const ref = collection(db, `users/${auth.currentUser.uid}/memos`)
+        const q = query(ref, orderBy('updatedAt', 'desc'))
         const unsubscribe = onSnapshot(q, (snapshot) => {
             const remoteMemos: Memo[] = []
             snapshot.forEach((doc) => {
